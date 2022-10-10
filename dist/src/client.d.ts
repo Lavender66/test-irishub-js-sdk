@@ -1,6 +1,5 @@
 import * as consts from './types/constants';
 import * as modules from './modules';
-import { RpcClient } from './nets/rpc-client';
 import { AxiosRequestConfig } from 'axios';
 import * as types from './types';
 import { Wallet } from "./types";
@@ -9,8 +8,6 @@ export declare class Client {
     /** IRISHub Client Config */
     config: DefaultClientConfig;
     /** Axios client for tendermint rpc requests */
-    private _rpcClient?;
-    get rpcClient(): RpcClient;
     /** Auth module */
     /** Token module */
     /** Bank module */

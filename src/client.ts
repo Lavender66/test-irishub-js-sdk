@@ -1,7 +1,7 @@
 import * as consts from './types/constants';
 import * as modules from './modules';
-import { RpcClient } from './nets/rpc-client';
-import { EventListener } from './nets/event-listener';
+// import { RpcClient } from './nets/rpc-client';
+// import { EventListener } from './nets/event-listener';
 import { AxiosRequestConfig } from 'axios';
 import * as types from './types';
 import { SdkError, CODES } from './errors';
@@ -15,11 +15,11 @@ export class Client {
   config: DefaultClientConfig;
 
   /** Axios client for tendermint rpc requests */
-  private _rpcClient?: RpcClient;
-  get rpcClient():RpcClient{
-    if (!this._rpcClient) {this._rpcClient = new RpcClient(this.config.rpcConfig)}
-    return this._rpcClient;
-  }
+  // private _rpcClient?: RpcClient;
+  // get rpcClient():RpcClient{
+  //   if (!this._rpcClient) {this._rpcClient = new RpcClient(this.config.rpcConfig)}
+  //   return this._rpcClient;
+  // }
 
   /** Auth module */
   // private _auth?: modules.Auth;
@@ -299,7 +299,7 @@ export class Client {
   withRpcConfig(rpcConfig: AxiosRequestConfig) {
     rpcConfig.baseURL = this.config.node;
     this.config.rpcConfig = rpcConfig;
-    this._rpcClient = new RpcClient(this.config.rpcConfig);
+    // this._rpcClient = new RpcClient(this.config.rpcConfig);
     return this;
   }
 }

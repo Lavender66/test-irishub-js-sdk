@@ -1,7 +1,7 @@
 export * as types from './types';
-export * as utils from './utils';
+// export * as utils from './utils';
 export { Client, ClientConfig, KeyDAO } from './client';
-export {Crypto} from "./utils";
+// export {Crypto} from "./utils";
 import {
   Client,
   ClientConfig,

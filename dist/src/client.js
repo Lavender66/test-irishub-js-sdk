@@ -19,8 +19,6 @@ var consts = _interopRequireWildcard(require("./types/constants"));
 
 var modules = _interopRequireWildcard(require("./modules"));
 
-var _rpcClient = require("./nets/rpc-client");
-
 var types = _interopRequireWildcard(require("./types"));
 
 var _errors = require("./errors");
@@ -158,7 +156,6 @@ var Client = /*#__PURE__*/function () {
   function Client(config) {
     (0, _classCallCheck2["default"])(this, Client);
     (0, _defineProperty2["default"])(this, "config", void 0);
-    (0, _defineProperty2["default"])(this, "_rpcClient", void 0);
     (0, _defineProperty2["default"])(this, "_keys", void 0);
     (0, _defineProperty2["default"])(this, "_protobuf", void 0);
     this.config = config;
@@ -198,18 +195,17 @@ var Client = /*#__PURE__*/function () {
 
 
   (0, _createClass2["default"])(Client, [{
-    key: "rpcClient",
+    key: "keys",
     get:
     /** IRISHub Client Config */
 
     /** Axios client for tendermint rpc requests */
-    function get() {
-      if (!this._rpcClient) {
-        this._rpcClient = new _rpcClient.RpcClient(this.config.rpcConfig);
-      }
+    // private _rpcClient?: RpcClient;
+    // get rpcClient():RpcClient{
+    //   if (!this._rpcClient) {this._rpcClient = new RpcClient(this.config.rpcConfig)}
+    //   return this._rpcClient;
+    // }
 
-      return this._rpcClient;
-    }
     /** Auth module */
     // private _auth?: modules.Auth;
     // get auth(): modules.Auth{
@@ -237,10 +233,7 @@ var Client = /*#__PURE__*/function () {
     // }
 
     /** Key management module */
-
-  }, {
-    key: "keys",
-    get: function get() {
+    function get() {
       if (!this._keys) {
         this._keys = new modules.Keys(this);
       }
@@ -349,8 +342,8 @@ var Client = /*#__PURE__*/function () {
     key: "withRpcConfig",
     value: function withRpcConfig(rpcConfig) {
       rpcConfig.baseURL = this.config.node;
-      this.config.rpcConfig = rpcConfig;
-      this._rpcClient = new _rpcClient.RpcClient(this.config.rpcConfig);
+      this.config.rpcConfig = rpcConfig; // this._rpcClient = new RpcClient(this.config.rpcConfig);
+
       return this;
     }
   }]);

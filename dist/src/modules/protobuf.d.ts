@@ -1,5 +1,4 @@
 import { Client } from '../client';
-import * as types from '../types';
 /**
  * ProtobufModel module allows you to deserialize protobuf serialize string
  *
@@ -17,27 +16,18 @@ export declare class Protobuf {
      * @param  {[type]} returnProtobufModel:bool If true, return the Protobuf model
      * @return {[type]} Tx object
      */
-    deserializeTx(tx: string, returnProtobufModel?: boolean): object;
     /**
      * Unpack protobuffer tx msg
      * @param  {[type]} returnProtobufModel:bool If true, return the Protobuf model
      * @param  {[type]} msg tx msg of proto any type
      * @return {[type]} message object
      */
-    unpackMsg(msg: {
-        typeUrl: string;
-        value: string;
-    }, returnProtobufModel?: boolean): object | null;
     /**
      * Unpack protobuffer Proposal Content
      * @param  {[type]} returnProtobufModel:bool If true, return the Protobuf model
      * @param  {[type]} content proposal Content of proto any type
      * @return {[type]} message object
      */
-    unpackProposalContent(content: {
-        typeUrl: string;
-        value: string;
-    }, returnProtobufModel?: boolean): object | null;
     /**
      * deserialize TxBody
      * @param  {[type]} TxBody:string  base64 string
@@ -72,7 +62,6 @@ export declare class Protobuf {
      * @param  {[type]} returnProtobufModel:bool If true, return the Protobuf model
      * @return {[type]} Signing Info object
      */
-    deserializeSigningInfo(signingInfo: string, returnProtobufModel?: boolean): types.ValidatorSigningInfo | object;
     /**
      * deserialize Pubkey
      * @param  {[type]} pubKey:{typeUrl:string, value:string}
