@@ -22,30 +22,30 @@ export class Client {
   }
 
   /** Auth module */
-  private _auth?: modules.Auth;
-  get auth(): modules.Auth{
-    if (!this._auth) {this._auth = new modules.Auth(this)}
-    return this._auth;
-  }
+  // private _auth?: modules.Auth;
+  // get auth(): modules.Auth{
+  //   if (!this._auth) {this._auth = new modules.Auth(this)}
+  //   return this._auth;
+  // }
 
   /** Token module */
-  private _token?: modules.Token;
-  get token(): modules.Token{
-    if (this.config.chainNetwork != consts.ChainNetwork.Iris) {
-      throw new SdkError('This module is not supported on the current chain network.',CODES.Panic);
-    }
-    if (!this._token) {
-      this._token = new modules.Token(this)
-    }
-    return this._token;
-  }
+  // private _token?: modules.Token;
+  // get token(): modules.Token{
+  //   if (this.config.chainNetwork != consts.ChainNetwork.Iris) {
+  //     throw new SdkError('This module is not supported on the current chain network.',CODES.Panic);
+  //   }
+  //   if (!this._token) {
+  //     this._token = new modules.Token(this)
+  //   }
+  //   return this._token;
+  // }
 
   /** Bank module */
-  private _bank?: modules.Bank;
-  get bank():modules.Bank{
-    if (!this._bank) {this._bank = new modules.Bank(this)}
-    return this._bank;
-  }
+  // private _bank?: modules.Bank;
+  // get bank():modules.Bank{
+  //   if (!this._bank) {this._bank = new modules.Bank(this)}
+  //   return this._bank;
+  // }
 
   /** Key management module */
   private _keys?: modules.Keys;
@@ -62,40 +62,40 @@ export class Client {
   }
 
   /** Staking module */
-  private _staking?: modules.Staking;
-  get staking():modules.Staking{
-    if (!this._staking) {this._staking = new modules.Staking(this)}
-    return this._staking;
-  }
+  // private _staking?: modules.Staking;
+  // get staking():modules.Staking{
+  //   if (!this._staking) {this._staking = new modules.Staking(this)}
+  //   return this._staking;
+  // }
 
   /** Tx module */
-  private _tx?: modules.Tx;
-  get tx():modules.Tx{
-    if (!this._tx) {this._tx = new modules.Tx(this)}
-    return this._tx;
-  }
+  // private _tx?: modules.Tx;
+  // get tx():modules.Tx{
+  //   if (!this._tx) {this._tx = new modules.Tx(this)}
+  //   return this._tx;
+  // }
 
   /** Gov module */
-  private _gov?: modules.Gov;
-  get gov():modules.Gov{
-    if (!this._gov) {this._gov = new modules.Gov(this)}
-    return this._gov;
-  }
+  // private _gov?: modules.Gov;
+  // get gov():modules.Gov{
+  //   if (!this._gov) {this._gov = new modules.Gov(this)}
+  //   return this._gov;
+  // }
 
 
   /** Slashing module */
-  private _slashing?: modules.Slashing;
-  get slashing(): modules.Slashing{
-    if (!this._slashing) {this._slashing = new modules.Slashing(this)}
-    return this._slashing;
-  }
+  // private _slashing?: modules.Slashing;
+  // get slashing(): modules.Slashing{
+  //   if (!this._slashing) {this._slashing = new modules.Slashing(this)}
+  //   return this._slashing;
+  // }
 
   /** Distribution module */
-  private _distribution?: modules.Distribution;
-  get distribution(): modules.Distribution{
-    if (!this._distribution) {this._distribution = new modules.Distribution(this)}
-    return this._distribution;
-  }
+  // private _distribution?: modules.Distribution;
+  // get distribution(): modules.Distribution{
+  //   if (!this._distribution) {this._distribution = new modules.Distribution(this)}
+  //   return this._distribution;
+  // }
 
   /** Service module */
   // private _service?: modules.Service;
@@ -127,65 +127,65 @@ export class Client {
   //   return this._random;
   // }
 
-  /** Utils module */
-  private _utils?: modules.Utils;
-  get utils(): modules.Utils{
-    if (!this._utils) {this._utils = new modules.Utils(this)}
-    return this._utils;
-  }
+  // /** Utils module */
+  // private _utils?: modules.Utils;
+  // get utils(): modules.Utils{
+  //   if (!this._utils) {this._utils = new modules.Utils(this)}
+  //   return this._utils;
+  // }
 
-  /** Tendermint module */
-  private _tendermint?: modules.Tendermint;
-  get tendermint(): modules.Tendermint{
-    if (!this._tendermint) {this._tendermint = new modules.Tendermint(this)}
-    return this._tendermint;
-  }
+  // /** Tendermint module */
+  // private _tendermint?: modules.Tendermint;
+  // get tendermint(): modules.Tendermint{
+  //   if (!this._tendermint) {this._tendermint = new modules.Tendermint(this)}
+  //   return this._tendermint;
+  // }
 
-  /** Coinswap module */
-  private _coinswap?: modules.Coinswap;
-  get coinswap(): modules.Coinswap{
-    if (this.config.chainNetwork != consts.ChainNetwork.Iris) {
-      throw new SdkError('This module is not supported on the current chain network.',CODES.Panic);
-    }
-    if (!this._coinswap) {this._coinswap = new modules.Coinswap(this)}
-    return this._coinswap;
-  }
-  /** Farm module */
-  private _farm?: modules.Farm;
-  get farm(): modules.Farm{
-    if (this.config.chainNetwork != consts.ChainNetwork.Iris) {
-      throw new SdkError('This module is not supported on the current chain network.',CODES.Panic);
-    }
-    if (!this._farm) {this._farm = new modules.Farm(this)}
-    return this._farm;
-  }
+  // /** Coinswap module */
+  // private _coinswap?: modules.Coinswap;
+  // get coinswap(): modules.Coinswap{
+  //   if (this.config.chainNetwork != consts.ChainNetwork.Iris) {
+  //     throw new SdkError('This module is not supported on the current chain network.',CODES.Panic);
+  //   }
+  //   if (!this._coinswap) {this._coinswap = new modules.Coinswap(this)}
+  //   return this._coinswap;
+  // }
+  // /** Farm module */
+  // private _farm?: modules.Farm;
+  // get farm(): modules.Farm{
+  //   if (this.config.chainNetwork != consts.ChainNetwork.Iris) {
+  //     throw new SdkError('This module is not supported on the current chain network.',CODES.Panic);
+  //   }
+  //   if (!this._farm) {this._farm = new modules.Farm(this)}
+  //   return this._farm;
+  // }
 
-  /** NFT module */
-  private _nft?: modules.Nft;
-  get nft(): modules.Nft{
-    if (this.config.chainNetwork != consts.ChainNetwork.Iris) {
-      throw new SdkError('This module is not supported on the current chain network.',CODES.Panic);
-    }
-    if (!this._nft) {this._nft = new modules.Nft(this)}
-    return this._nft;
-  }
+  // /** NFT module */
+  // private _nft?: modules.Nft;
+  // get nft(): modules.Nft{
+  //   if (this.config.chainNetwork != consts.ChainNetwork.Iris) {
+  //     throw new SdkError('This module is not supported on the current chain network.',CODES.Panic);
+  //   }
+  //   if (!this._nft) {this._nft = new modules.Nft(this)}
+  //   return this._nft;
+  // }
 
-  /** Htlc module */
-  private _htlc?: modules.Htlc;
-  get htlc():modules.Htlc{
-    if (this.config.chainNetwork != consts.ChainNetwork.Iris) {
-      throw new SdkError('This module is not supported on the current chain network.',CODES.Panic);
-    }
-    if (!this._htlc) {this._htlc = new modules.Htlc(this)}
-    return this._htlc;
-  }
+  // /** Htlc module */
+  // private _htlc?: modules.Htlc;
+  // get htlc():modules.Htlc{
+  //   if (this.config.chainNetwork != consts.ChainNetwork.Iris) {
+  //     throw new SdkError('This module is not supported on the current chain network.',CODES.Panic);
+  //   }
+  //   if (!this._htlc) {this._htlc = new modules.Htlc(this)}
+  //   return this._htlc;
+  // }
 
-  /** Ibc module */
-  private _ibc?: modules.Ibc;
-  get ibc():modules.Ibc{
-    if (!this._ibc) {this._ibc = new modules.Ibc(this)}
-    return this._ibc;
-  }
+  // /** Ibc module */
+  // private _ibc?: modules.Ibc;
+  // get ibc():modules.Ibc{
+  //   if (!this._ibc) {this._ibc = new modules.Ibc(this)}
+  //   return this._ibc;
+  // }
 
   /** IRISHub SDK Constructor */
   constructor(config: DefaultClientConfig) {
