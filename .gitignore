@@ -1,6 +1,7 @@
 node_modules
 .vscode
 docs
+yarn.lock
 .idea/
 /node_modules/
 /.github/
