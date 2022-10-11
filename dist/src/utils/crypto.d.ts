@@ -160,7 +160,6 @@ export declare class Crypto {
      * @param  protobuf tx :base64 string
      * @throws tx hash
      */
-    static generateTxHash(tx: string): string;
     /**
      * Copy from https://github.com/sipa/bech32/blob/master/ref/javascript/segwit_addr.js
      */

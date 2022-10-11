@@ -7,24 +7,12 @@ import { Wallet } from "./types";
 export declare class Client {
     /** IRISHub Client Config */
     config: DefaultClientConfig;
-    /** Axios client for tendermint rpc requests */
-    /** Auth module */
-    /** Token module */
-    /** Bank module */
     /** Key management module */
     private _keys?;
     get keys(): modules.Keys;
     /** Protobuf module */
     private _protobuf?;
     get protobuf(): modules.Protobuf;
-    /** Staking module */
-    /** Tx module */
-    /** Gov module */
-    /** Slashing module */
-    /** Distribution module */
-    /** Service module */
-    /** Oracle module */
-    /** Random module */
     /** IRISHub SDK Constructor */
     constructor(config: DefaultClientConfig);
     /**

@@ -1,4 +1,3 @@
-import { TxHelper, TxModelCreator } from '../helper';
 import { SdkError, CODES } from '../errors';
 /** 
  * Base Msg
@@ -18,11 +17,6 @@ export class Msg {
 
   getModel():any{
     throw new SdkError("not implement",CODES.Internal);
-  }
-
-  pack(): any{
-    let msg: any = this.getModel();
-    return TxModelCreator.createAnyModel(this.type, msg.serializeBinary());
   }
 
   /**

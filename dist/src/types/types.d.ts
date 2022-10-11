@@ -8,7 +8,6 @@ export declare class Msg {
     constructor(type: string);
     static getModelClass(): any;
     getModel(): any;
-    pack(): any;
     /**
      * unpack protobuf tx message
      * @type {[type]}

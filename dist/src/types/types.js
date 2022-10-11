@@ -13,8 +13,6 @@ var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/creat
 
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _helper = require("../helper");
-
 var _errors = require("../errors");
 
 /** 
@@ -33,12 +31,6 @@ var Msg = /*#__PURE__*/function () {
     key: "getModel",
     value: function getModel() {
       throw new _errors.SdkError("not implement", _errors.CODES.Internal);
-    }
-  }, {
-    key: "pack",
-    value: function pack() {
-      var msg = this.getModel();
-      return _helper.TxModelCreator.createAnyModel(this.type, msg.serializeBinary());
     }
     /**
      * unpack protobuf tx message
