@@ -17,8 +17,6 @@ var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/de
 
 var consts = _interopRequireWildcard(require("./types/constants"));
 
-var modules = _interopRequireWildcard(require("./modules"));
-
 var types = _interopRequireWildcard(require("./types"));
 
 var _errors = require("./errors");
@@ -33,12 +31,19 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 
 /** IRISHub Client */
 var Client = /*#__PURE__*/function () {
+  /** IRISHub Client Config */
+
+  /** Key management module */
+  // private _keys?: modules.Keys;
+  // get keys():modules.Keys{
+  //   if (!this._keys) {this._keys = new modules.Keys(this)}
+  //   return this._keys;
+  // }
+
   /** IRISHub SDK Constructor */
   function Client(config) {
     (0, _classCallCheck2["default"])(this, Client);
     (0, _defineProperty2["default"])(this, "config", void 0);
-    (0, _defineProperty2["default"])(this, "_keys", void 0);
-    (0, _defineProperty2["default"])(this, "_protobuf", void 0);
     this.config = config;
     if (!this.config.rpcConfig) this.config.rpcConfig = {};
 
@@ -76,30 +81,6 @@ var Client = /*#__PURE__*/function () {
 
 
   (0, _createClass2["default"])(Client, [{
-    key: "keys",
-    get:
-    /** IRISHub Client Config */
-
-    /** Key management module */
-    function get() {
-      if (!this._keys) {
-        this._keys = new modules.Keys(this);
-      }
-
-      return this._keys;
-    }
-    /** Protobuf module */
-
-  }, {
-    key: "protobuf",
-    get: function get() {
-      if (!this._protobuf) {
-        this._protobuf = new modules.Protobuf(this);
-      }
-
-      return this._protobuf;
-    }
-  }, {
     key: "withKeyDAO",
     value: function withKeyDAO(keyDAO) {
       // Set default encrypt/decrypt methods

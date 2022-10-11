@@ -29,16 +29,3 @@ Object.keys(_keys).forEach(function (key) {
     }
   });
 });
-
-var _protobuf = require("./protobuf");
-
-Object.keys(_protobuf).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (key in exports && exports[key] === _protobuf[key]) return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _protobuf[key];
-    }
-  });
-});

@@ -19,13 +19,6 @@ export class Client {
     return this._keys;
   }
 
-  /** Protobuf module */
-  private _protobuf?: modules.Protobuf;
-  get protobuf():modules.Protobuf{
-    if (!this._protobuf) {this._protobuf = new modules.Protobuf(this)}
-    return this._protobuf;
-  }
-
   /** IRISHub SDK Constructor */
   constructor(config: DefaultClientConfig) {
     this.config = config;

@@ -1,5 +1,4 @@
 import * as consts from './types/constants';
-import * as modules from './modules';
 import { AxiosRequestConfig } from 'axios';
 import * as types from './types';
 import { Wallet } from "./types";
@@ -8,11 +7,6 @@ export declare class Client {
     /** IRISHub Client Config */
     config: DefaultClientConfig;
     /** Key management module */
-    private _keys?;
-    get keys(): modules.Keys;
-    /** Protobuf module */
-    private _protobuf?;
-    get protobuf(): modules.Protobuf;
     /** IRISHub SDK Constructor */
     constructor(config: DefaultClientConfig);
     /**

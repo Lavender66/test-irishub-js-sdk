@@ -24,17 +24,6 @@ export class Msg {
    * @type {[type]}
    * returns protobuf message instance
    */
-  unpack(msgValue:string):any{
-    if (!msgValue) {
-      throw new SdkError("msgValue can not be empty",CODES.Internal);
-    }
-    let msg = (this.constructor as any).getModelClass().deserializeBinary(Buffer.from(msgValue,'base64'));
-    if (msg) {
-      return msg;
-    }else{
-      throw new SdkError("unpack message fail",CODES.FailedUnpackingProtobufMessagFromAny);
-    }
-  }
 }
 
 export enum TxType {

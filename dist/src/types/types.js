@@ -38,21 +38,6 @@ var Msg = /*#__PURE__*/function () {
      * returns protobuf message instance
      */
 
-  }, {
-    key: "unpack",
-    value: function unpack(msgValue) {
-      if (!msgValue) {
-        throw new _errors.SdkError("msgValue can not be empty", _errors.CODES.Internal);
-      }
-
-      var msg = this.constructor.getModelClass().deserializeBinary(Buffer.from(msgValue, 'base64'));
-
-      if (msg) {
-        return msg;
-      } else {
-        throw new _errors.SdkError("unpack message fail", _errors.CODES.FailedUnpackingProtobufMessagFromAny);
-      }
-    }
   }], [{
     key: "getModelClass",
     value: function getModelClass() {
