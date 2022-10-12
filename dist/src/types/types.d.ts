@@ -8,6 +8,13 @@ export declare class Msg {
     constructor(type: string);
     static getModelClass(): any;
     getModel(): any;
+    pack(): any;
+    /**
+     * unpack protobuf tx message
+     * @type {[type]}
+     * returns protobuf message instance
+     */
+    unpack(msgValue: string): any;
 }
 export declare enum TxType {
     MsgSend = "cosmos.bank.v1beta1.MsgSend",

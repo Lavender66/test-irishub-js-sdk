@@ -19,6 +19,8 @@ var consts = _interopRequireWildcard(require("./types/constants"));
 
 var modules = _interopRequireWildcard(require("./modules"));
 
+var _rpcClient = require("./nets/rpc-client");
+
 var types = _interopRequireWildcard(require("./types"));
 
 var _errors = require("./errors");
@@ -37,7 +39,24 @@ var Client = /*#__PURE__*/function () {
   function Client(config) {
     (0, _classCallCheck2["default"])(this, Client);
     (0, _defineProperty2["default"])(this, "config", void 0);
+    (0, _defineProperty2["default"])(this, "_rpcClient", void 0);
+    (0, _defineProperty2["default"])(this, "_auth", void 0);
+    (0, _defineProperty2["default"])(this, "_token", void 0);
+    (0, _defineProperty2["default"])(this, "_bank", void 0);
     (0, _defineProperty2["default"])(this, "_keys", void 0);
+    (0, _defineProperty2["default"])(this, "_protobuf", void 0);
+    (0, _defineProperty2["default"])(this, "_staking", void 0);
+    (0, _defineProperty2["default"])(this, "_tx", void 0);
+    (0, _defineProperty2["default"])(this, "_gov", void 0);
+    (0, _defineProperty2["default"])(this, "_slashing", void 0);
+    (0, _defineProperty2["default"])(this, "_distribution", void 0);
+    (0, _defineProperty2["default"])(this, "_utils", void 0);
+    (0, _defineProperty2["default"])(this, "_tendermint", void 0);
+    (0, _defineProperty2["default"])(this, "_coinswap", void 0);
+    (0, _defineProperty2["default"])(this, "_farm", void 0);
+    (0, _defineProperty2["default"])(this, "_nft", void 0);
+    (0, _defineProperty2["default"])(this, "_htlc", void 0);
+    (0, _defineProperty2["default"])(this, "_ibc", void 0);
     this.config = config;
     if (!this.config.rpcConfig) this.config.rpcConfig = {};
 
@@ -75,17 +94,254 @@ var Client = /*#__PURE__*/function () {
 
 
   (0, _createClass2["default"])(Client, [{
-    key: "keys",
+    key: "rpcClient",
     get:
     /** IRISHub Client Config */
 
-    /** Key management module */
+    /** Axios client for tendermint rpc requests */
     function get() {
+      if (!this._rpcClient) {
+        this._rpcClient = new _rpcClient.RpcClient(this.config.rpcConfig);
+      }
+
+      return this._rpcClient;
+    }
+    /** Auth module */
+
+  }, {
+    key: "auth",
+    get: function get() {
+      if (!this._auth) {
+        this._auth = new modules.Auth(this);
+      }
+
+      return this._auth;
+    }
+    /** Token module */
+
+  }, {
+    key: "token",
+    get: function get() {
+      if (this.config.chainNetwork != consts.ChainNetwork.Iris) {
+        throw new _errors.SdkError('This module is not supported on the current chain network.', _errors.CODES.Panic);
+      }
+
+      if (!this._token) {
+        this._token = new modules.Token(this);
+      }
+
+      return this._token;
+    }
+    /** Bank module */
+
+  }, {
+    key: "bank",
+    get: function get() {
+      if (!this._bank) {
+        this._bank = new modules.Bank(this);
+      }
+
+      return this._bank;
+    }
+    /** Key management module */
+
+  }, {
+    key: "keys",
+    get: function get() {
       if (!this._keys) {
         this._keys = new modules.Keys(this);
       }
 
       return this._keys;
+    }
+    /** Protobuf module */
+
+  }, {
+    key: "protobuf",
+    get: function get() {
+      if (!this._protobuf) {
+        this._protobuf = new modules.Protobuf(this);
+      }
+
+      return this._protobuf;
+    }
+    /** Staking module */
+
+  }, {
+    key: "staking",
+    get: function get() {
+      if (!this._staking) {
+        this._staking = new modules.Staking(this);
+      }
+
+      return this._staking;
+    }
+    /** Tx module */
+
+  }, {
+    key: "tx",
+    get: function get() {
+      if (!this._tx) {
+        this._tx = new modules.Tx(this);
+      }
+
+      return this._tx;
+    }
+    /** Gov module */
+
+  }, {
+    key: "gov",
+    get: function get() {
+      if (!this._gov) {
+        this._gov = new modules.Gov(this);
+      }
+
+      return this._gov;
+    }
+    /** Slashing module */
+
+  }, {
+    key: "slashing",
+    get: function get() {
+      if (!this._slashing) {
+        this._slashing = new modules.Slashing(this);
+      }
+
+      return this._slashing;
+    }
+    /** Distribution module */
+
+  }, {
+    key: "distribution",
+    get: function get() {
+      if (!this._distribution) {
+        this._distribution = new modules.Distribution(this);
+      }
+
+      return this._distribution;
+    }
+    /** Service module */
+    // private _service?: modules.Service;
+    // get service(): modules.Service{
+    //   if (this.config.chainNetwork != consts.ChainNetwork.Iris) {
+    //     throw new SdkError('This module is not supported on the current chain network.',CODES.Panic);
+    //   }
+    //   if (!this._service) {this._service = new modules.Service(this)}
+    //   return this._service;
+    // }
+
+    /** Oracle module */
+    // private _oracle?: modules.Oracle;
+    // get oracle(): modules.Oracle{
+    //   if (this.config.chainNetwork != consts.ChainNetwork.Iris) {
+    //     throw new SdkError('This module is not supported on the current chain network.',CODES.Panic);
+    //   }
+    //   if (!this._oracle) {this._oracle = new modules.Oracle(this)}
+    //   return this._oracle;
+    // }
+
+    /** Random module */
+    // private _random?: modules.Random;
+    // get random(): modules.Random{
+    //   if (this.config.chainNetwork != consts.ChainNetwork.Iris) {
+    //     throw new SdkError('This module is not supported on the current chain network.',CODES.Panic);
+    //   }
+    //   if (!this._random) {this._random = new modules.Random(this)}
+    //   return this._random;
+    // }
+
+    /** Utils module */
+
+  }, {
+    key: "utils",
+    get: function get() {
+      if (!this._utils) {
+        this._utils = new modules.Utils(this);
+      }
+
+      return this._utils;
+    }
+    /** Tendermint module */
+
+  }, {
+    key: "tendermint",
+    get: function get() {
+      if (!this._tendermint) {
+        this._tendermint = new modules.Tendermint(this);
+      }
+
+      return this._tendermint;
+    }
+    /** Coinswap module */
+
+  }, {
+    key: "coinswap",
+    get: function get() {
+      if (this.config.chainNetwork != consts.ChainNetwork.Iris) {
+        throw new _errors.SdkError('This module is not supported on the current chain network.', _errors.CODES.Panic);
+      }
+
+      if (!this._coinswap) {
+        this._coinswap = new modules.Coinswap(this);
+      }
+
+      return this._coinswap;
+    }
+    /** Farm module */
+
+  }, {
+    key: "farm",
+    get: function get() {
+      if (this.config.chainNetwork != consts.ChainNetwork.Iris) {
+        throw new _errors.SdkError('This module is not supported on the current chain network.', _errors.CODES.Panic);
+      }
+
+      if (!this._farm) {
+        this._farm = new modules.Farm(this);
+      }
+
+      return this._farm;
+    }
+    /** NFT module */
+
+  }, {
+    key: "nft",
+    get: function get() {
+      if (this.config.chainNetwork != consts.ChainNetwork.Iris) {
+        throw new _errors.SdkError('This module is not supported on the current chain network.', _errors.CODES.Panic);
+      }
+
+      if (!this._nft) {
+        this._nft = new modules.Nft(this);
+      }
+
+      return this._nft;
+    }
+    /** Htlc module */
+
+  }, {
+    key: "htlc",
+    get: function get() {
+      if (this.config.chainNetwork != consts.ChainNetwork.Iris) {
+        throw new _errors.SdkError('This module is not supported on the current chain network.', _errors.CODES.Panic);
+      }
+
+      if (!this._htlc) {
+        this._htlc = new modules.Htlc(this);
+      }
+
+      return this._htlc;
+    }
+    /** Ibc module */
+
+  }, {
+    key: "ibc",
+    get: function get() {
+      if (!this._ibc) {
+        this._ibc = new modules.Ibc(this);
+      }
+
+      return this._ibc;
     }
   }, {
     key: "withKeyDAO",
@@ -178,8 +434,8 @@ var Client = /*#__PURE__*/function () {
     key: "withRpcConfig",
     value: function withRpcConfig(rpcConfig) {
       rpcConfig.baseURL = this.config.node;
-      this.config.rpcConfig = rpcConfig; // this._rpcClient = new RpcClient(this.config.rpcConfig);
-
+      this.config.rpcConfig = rpcConfig;
+      this._rpcClient = new _rpcClient.RpcClient(this.config.rpcConfig);
       return this;
     }
   }]);

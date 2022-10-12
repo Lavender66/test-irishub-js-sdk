@@ -596,23 +596,28 @@ var Crypto = /*#__PURE__*/function () {
      * @param  protobuf tx :base64 string
      * @throws tx hash
      */
-    // static generateTxHash(tx: string): string {
-    //   if (!tx || typeof tx != 'string') {
-    //     throw new SdkError('invalid tx',CODES.TxParseError);
-    //   }
-    //   const tx_pb = types.tx_tx_pb.Tx.deserializeBinary(tx);
-    //   if (!tx_pb) {
-    //     throw new SdkError('deserialize tx err',CODES.TxParseError);
-    //   }
-    //   const txRaw = new types.tx_tx_pb.TxRaw();
-    //   txRaw.setBodyBytes(tx_pb.getBody().serializeBinary());
-    //   txRaw.setAuthInfoBytes(tx_pb.getAuthInfo().serializeBinary());
-    //   tx_pb.getSignaturesList().forEach((signature:Uint8Array)=>{
-    //       txRaw.addSignatures(signature);
-    //   })
-    //   return (Sha256(txRaw.serializeBinary()) || '').toUpperCase();
-    // }
 
+  }, {
+    key: "generateTxHash",
+    value: function generateTxHash(tx) {
+      if (!tx || typeof tx != 'string') {
+        throw new _errors.SdkError('invalid tx', _errors.CODES.TxParseError);
+      }
+
+      var tx_pb = types.tx_tx_pb.Tx.deserializeBinary(tx);
+
+      if (!tx_pb) {
+        throw new _errors.SdkError('deserialize tx err', _errors.CODES.TxParseError);
+      }
+
+      var txRaw = new types.tx_tx_pb.TxRaw();
+      txRaw.setBodyBytes(tx_pb.getBody().serializeBinary());
+      txRaw.setAuthInfoBytes(tx_pb.getAuthInfo().serializeBinary());
+      tx_pb.getSignaturesList().forEach(function (signature) {
+        txRaw.addSignatures(signature);
+      });
+      return (Sha256(txRaw.serializeBinary()) || '').toUpperCase();
+    }
     /**
      * Copy from https://github.com/sipa/bech32/blob/master/ref/javascript/segwit_addr.js
      */

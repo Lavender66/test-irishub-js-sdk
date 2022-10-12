@@ -1,5 +1,6 @@
 import * as consts from './types/constants';
 import * as modules from './modules';
+import { RpcClient } from './nets/rpc-client';
 import { AxiosRequestConfig } from 'axios';
 import * as types from './types';
 import { Wallet } from "./types";
@@ -7,9 +8,63 @@ import { Wallet } from "./types";
 export declare class Client {
     /** IRISHub Client Config */
     config: DefaultClientConfig;
+    /** Axios client for tendermint rpc requests */
+    private _rpcClient?;
+    get rpcClient(): RpcClient;
+    /** Auth module */
+    private _auth?;
+    get auth(): modules.Auth;
+    /** Token module */
+    private _token?;
+    get token(): modules.Token;
+    /** Bank module */
+    private _bank?;
+    get bank(): modules.Bank;
     /** Key management module */
     private _keys?;
     get keys(): modules.Keys;
+    /** Protobuf module */
+    private _protobuf?;
+    get protobuf(): modules.Protobuf;
+    /** Staking module */
+    private _staking?;
+    get staking(): modules.Staking;
+    /** Tx module */
+    private _tx?;
+    get tx(): modules.Tx;
+    /** Gov module */
+    private _gov?;
+    get gov(): modules.Gov;
+    /** Slashing module */
+    private _slashing?;
+    get slashing(): modules.Slashing;
+    /** Distribution module */
+    private _distribution?;
+    get distribution(): modules.Distribution;
+    /** Service module */
+    /** Oracle module */
+    /** Random module */
+    /** Utils module */
+    private _utils?;
+    get utils(): modules.Utils;
+    /** Tendermint module */
+    private _tendermint?;
+    get tendermint(): modules.Tendermint;
+    /** Coinswap module */
+    private _coinswap?;
+    get coinswap(): modules.Coinswap;
+    /** Farm module */
+    private _farm?;
+    get farm(): modules.Farm;
+    /** NFT module */
+    private _nft?;
+    get nft(): modules.Nft;
+    /** Htlc module */
+    private _htlc?;
+    get htlc(): modules.Htlc;
+    /** Ibc module */
+    private _ibc?;
+    get ibc(): modules.Ibc;
     /** IRISHub SDK Constructor */
     constructor(config: DefaultClientConfig);
     /**

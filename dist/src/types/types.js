@@ -13,6 +13,8 @@ var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/creat
 
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
+var _helper = require("../helper");
+
 var _errors = require("../errors");
 
 /** 
@@ -32,12 +34,33 @@ var Msg = /*#__PURE__*/function () {
     value: function getModel() {
       throw new _errors.SdkError("not implement", _errors.CODES.Internal);
     }
+  }, {
+    key: "pack",
+    value: function pack() {
+      var msg = this.getModel();
+      return _helper.TxModelCreator.createAnyModel(this.type, msg.serializeBinary());
+    }
     /**
      * unpack protobuf tx message
      * @type {[type]}
      * returns protobuf message instance
      */
 
+  }, {
+    key: "unpack",
+    value: function unpack(msgValue) {
+      if (!msgValue) {
+        throw new _errors.SdkError("msgValue can not be empty", _errors.CODES.Internal);
+      }
+
+      var msg = this.constructor.getModelClass().deserializeBinary(Buffer.from(msgValue, 'base64'));
+
+      if (msg) {
+        return msg;
+      } else {
+        throw new _errors.SdkError("unpack message fail", _errors.CODES.FailedUnpackingProtobufMessagFromAny);
+      }
+    }
   }], [{
     key: "getModelClass",
     value: function getModelClass() {

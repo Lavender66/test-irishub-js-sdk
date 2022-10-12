@@ -6,6 +6,12 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.newClient = newClient;
+Object.defineProperty(exports, "Crypto", {
+  enumerable: true,
+  get: function get() {
+    return _utils.Crypto;
+  }
+});
 Object.defineProperty(exports, "Client", {
   enumerable: true,
   get: function get() {
@@ -24,11 +30,15 @@ Object.defineProperty(exports, "KeyDAO", {
     return _client.KeyDAO;
   }
 });
-exports.types = void 0;
+exports.utils = exports.types = void 0;
 
 var _types = _interopRequireWildcard(require("./types"));
 
 exports.types = _types;
+
+var _utils = _interopRequireWildcard(require("./utils"));
+
+exports.utils = _utils;
 
 var _client = require("./client");
 

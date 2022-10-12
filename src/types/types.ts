@@ -1,3 +1,4 @@
+import { TxHelper, TxModelCreator } from '../helper';
 import { SdkError, CODES } from '../errors';
 /** 
  * Base Msg
@@ -19,11 +20,27 @@ export class Msg {
     throw new SdkError("not implement",CODES.Internal);
   }
 
+  pack(): any{
+    let msg: any = this.getModel();
+    return TxModelCreator.createAnyModel(this.type, msg.serializeBinary());
+  }
+
   /**
    * unpack protobuf tx message
    * @type {[type]}
    * returns protobuf message instance
    */
+  unpack(msgValue:string):any{
+    if (!msgValue) {
+      throw new SdkError("msgValue can not be empty",CODES.Internal);
+    }
+    let msg = (this.constructor as any).getModelClass().deserializeBinary(Buffer.from(msgValue,'base64'));
+    if (msg) {
+      return msg;
+    }else{
+      throw new SdkError("unpack message fail",CODES.FailedUnpackingProtobufMessagFromAny);
+    }
+  }
 }
 
 export enum TxType {
