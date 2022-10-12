@@ -2,6 +2,8 @@ node_modules
 .vscode
 docs
 yarn.lock
+yarn-error.log
 .idea/
 /node_modules/
 /.github/
+
