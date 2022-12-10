@@ -32,9 +32,9 @@ export class BaseTest {
 
   static getClient(): Client {
     let config = {
-        node: 'http://192.168.150.33:26657',
+        node: 'http://192.168.0.129:26657',
         chainNetwork: iris.types.ChainNetwork.Iris,
-        chainId: 'iris',
+        chainId: 'irishub-qa',
         gas: '20000000',
         fee: { denom: 'uiris', amount: '200' },
     };

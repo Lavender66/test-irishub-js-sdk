@@ -6,7 +6,7 @@ describe('Token Tests', () => {
   test(
     'query tokens',
     async () => {
-      await BaseTest.getClient().token.queryTokens('iaa1eqvkfthtrr93g4p9qspp54w6dtjtrn27ar7rpw').then((res) => {
+      await BaseTest.getClient().token.queryTokens().then((res) => {
         console.log(res);
       }).catch(error => {
         console.log(error);

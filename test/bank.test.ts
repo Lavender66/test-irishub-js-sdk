@@ -65,7 +65,7 @@ describe('Bank Tests', () => {
       'query Balance',
       async () => {
         await BaseTest.getClient()
-          .bank.queryBalance('iaa174qyl02cupyqq77cqqtdl0frda6dl3rp2h9snu','udev')
+          .bank.queryBalance('iaa1weasw2y67p9nss6mhx5hftedp4zyzg72eu3wwn','udev')
           .then(res => {
             console.log(JSON.stringify(res));
           })
@@ -80,7 +80,7 @@ describe('Bank Tests', () => {
       'query All Balances',
       async () => {
         await BaseTest.getClient()
-          .bank.queryAllBalances('iaa1eqvkfthtrr93g4p9qspp54w6dtjtrn27ar7rpw')
+          .bank.queryAllBalances('iaa1g2tq9kacgj2tljrgku8mampz7c3l9xy6pxv6cc')
           .then(res => {
             console.log(JSON.stringify(res));
           })
